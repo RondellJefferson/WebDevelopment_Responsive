@@ -1,0 +1,53 @@
+body{
+  background-color: #a65a76;
+}
+.LCTL{
+  color: #a65a76;
+  top: 10%;
+  position: absolute;
+  left: 50%;
+  transform:translate(-50%, -50%);
+  font-size: 50px;
+  border: 2px solid white;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 50%;
+  height: 60px;
+}
+#logo{
+  position: relative;
+}
+.TheMessageBox{
+  display: flex;
+  margin-top: 45px;
+  margin-bottom: 45px;
+  background-color: #fdfdfd
+}
+/*.MarriageAdviceBorder{
+  display: flex;
+  background-color: #fdfdfd
+}*/
+#NandRBorder{
+  text-align: center;
+  margin: 25px;
+  padding-top: 45px;
+}
+#MarriageAdviceBox{
+  margin: 25px;
+  padding-top: 45px;
+  width: 50%;
+}
+.PointersBorder{
+
+}
+#SkydivePic{
+  margin-top: 25px;
+  margin-bottom: 25px;
+  padding-left: 20px;
+}
+#AdvicePic{
+  padding-bottom: 10px;
+  position: absolute;
+  right: 14%;
+  transform: translate(4%, 3%);
+}

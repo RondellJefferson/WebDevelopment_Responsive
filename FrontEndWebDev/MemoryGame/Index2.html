@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<script>
+
+  var card_arrays = ['D','D','P','P','A','A','B','B','C','C','L','L','E','E','F','F'];
+  var card_memory = [];
+  var deck_cards_ids = [];
+  var flip_cards = 0;
+  var moves = 0;
+
+  function startTime(){
+    var minutesLabel = document.getElementById("mins");
+    var secondsLabel = document.getElementById("secs");
+    var totalSeconds = 0;
+    setInterval(setTime, 1000);
+
+    function setTime() {
+      ++totalSeconds;
+      secondsLabel.innerHTML = pad(totalSeconds % 60);
+      minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
+    }
+
+    function pad(val) {
+      var valString = val + "";
+      if (valString.length < 2) {
+        return "0" + valString;
+      } else {
+        return valString;
+      }
+    }
+
+  }
+
+  Array.prototype.deck_shuffle = function(){
+      var i = this.length, j, temp;
+      while (--i > 0) {
+          j = Math.floor(Math.random() * (i+1));
+          temp = this[j];
+          this[j] = this[i];
+          this[i] = temp;
+      }
+  }
+
+  function reloadPage() {
+    location.reload();
+  }
+
+  function createBoard(){
+    flip_cards = 0;
+    moves = 0;
+    startTime();
+    //document.getElementById("myMoves").innerHTML = "0";
+    //document.getElementById("gameTime").innerHTML = "00:00";
+    var output = '';
+      card_arrays.deck_shuffle();
+    for(var i = 0; i < card_arrays.length; i++){
+      output += '<div id="deck_'+i+'" onclick="flipThatCard(this,\''+card_arrays[i]+'\')"></div>';
+    }
+
+    document.getElementById('deck_cards').innerHTML = output;
+
+  }
+
+  function scoreRating(moves){
+    var excellent = 14;
+    var average = 20;
+    var bad = 24;
+    if (moves > excellent && moves < average){
+      document.getElementById("3star").className = "fa fa-o";
+    } else if (moves > average && moves < bad) {
+      document.getElementById("2star").className = "fa fa-o";
+    }
+  }
+
+  function flipThatCard(deck,val) {
+    if(deck.innerHTML == "" && card_memory.length < 2){
+      deck.style.background = 'white';
+      deck.innerHTML = val;
+      if (card_memory.length == 0){
+        card_memory.push(val);
+        deck_cards_ids.push(deck.id);
+      } else if(card_memory.length == 1){
+        card_memory.push(val);
+        deck_cards_ids.push(deck.id);
+        if (card_memory[0] == card_memory[1]){
+          flip_cards += 2;
+          card_memory = [];
+                deck_cards_ids = [];
+          if(flip_cards == card_arrays.length){
+            if (moves < 14){
+              alert("Great Job! You completed With A Perfect Score 3 Stars with " + moves + " Moves and a time of " + document.getElementById("mins").innerHTML + " Minutes and " + document.getElementById("secs").innerHTML + " Seconds");
+              document.getElementById('deck_cards').innerHTML = "";
+              reloadPage();
+            }
+            else if (moves > 14 && moves < 20) {
+              alert("Good Job! You completed With An Average Score 2 Stars with " + moves + " Moves and a time of " + document.getElementById("mins").innerHTML + " Minutes and " + document.getElementById("secs").innerHTML + " Seconds");
+              document.getElementById('deck_cards').innerHTML = "";
+              reloadPage();
+            } else {
+              alert("Let's Do Better Next Time :(. You completed With 1 Star with " + moves + " Moves and a time of " + document.getElementById("mins").innerHTML + " Minutes and " + document.getElementById("secs").innerHTML + " Seconds");
+              document.getElementById('deck_cards').innerHTML = "";
+              reloadPage();
+            }
+          }
+        } else {
+          function wrongAnswer(){
+            var deck_1 = document.getElementById(deck_cards_ids[0]);
+            var deck_2 = document.getElementById(deck_cards_ids[1]);
+            deck_1.style.background = '#2e3d49';
+                  deck_1.innerHTML = "";
+            deck_2.style.background = '#2e3d49';
+                  deck_2.innerHTML = "";
+            card_memory = [];
+                  deck_cards_ids = [];
+          }
+          setTimeout(wrongAnswer, 700);
+        }
+        moves++;
+      }
+      document.getElementById("myMoves").innerHTML = moves;
+      scoreRating(moves);
+
+    }
+  }
+
+
+</script>
+<head>
+    <meta charset="utf-8">
+    <title>Matching Game</title>
+    <meta name="description" content="">
+    <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
+    <link rel="stylesheet" href="css/myStyle.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Matching Game</h1>
+        </header>
+
+        <section class="score-panel">
+        	<ul class="stars">
+        		<li><i id= "1star" class="fa fa-star"></i></li>
+        		<li><i id= "2star" class="fa fa-star"></i></li>
+        		<li><i id= "3star" class="fa fa-star"></i></li>
+        	</ul>
+
+        	<span id="myMoves"><b>0</b></span> Moves - Time:
+          <span id="mins"><b>00</b></span> :
+          <span id="secs"><b>00</b></span>
+
+            <div class="restart" onclick="reloadPage()">
+        		<i class="fa fa-repeat"></i>
+        	</div>
+        </section>
+
+        <div id="deck_cards"></div>
+        <script>createBoard();</script>
+    </div>
+    <script src="js/app.js"></script>
+</body>
+</html>

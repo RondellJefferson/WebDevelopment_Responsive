@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Website Profile</title>
+    <link rel="stylesheet" href="css/myStyle.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title></title>
+  </head>
+  <body>
+    <section class="container">
+
+      <section class="navBar">
+        <nav id="navStation" class="nav">
+          <ul class="nav__list">
+            <li class="nav__item" id= "topNav">About</li>
+            <li class="nav__item">Pictures</li>
+            <li class="nav__item">Blog</li>
+          </ul>
+        </nav>
+      </section>
+
+      <div id="myNav" class="overlay">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="overlay-content">
+          <a href="#">About</a>
+          <a href="#">Pictures</a>
+          <a href="#">Blog</a>
+        </div>
+      </div>
+
+      <div class="Button">
+        <span id="button" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+      </div>
+
+      <section class="insideContainer">
+
+        <header class="header">
+          <div class="headerinner">
+            <img class="headerLogo" src="img/motorcycle34.jpg" alt="Motocycle Pic">
+            <div class="alignRight">
+              <h1 class="headerTitle">Rondell Jefferson</h1>
+              <article class="textArticle">Front-End Web Developer</article>
+            </div>
+          </div>
+        </header>
+
+        <section class="bigPicture">
+          <article class="aboutMe">
+            <h2>Front-End Web Developer</h2>
+            <p>Programming and creating website is my passion</p>
+          </article>
+        </section>
+
+        <section class="moreAboutMe">
+          <h2 class="featuredWork">About Me</h2>
+          <div class="creatingFlexbox">
+            <div class="makeRoom">
+              <ul class="getDescription">
+                <li class="descriptions">
+                  <div class="pic">
+                    <img id="myPic" src="img/illRyders.jpg" alt="Ill Ryders Together">
+                  </div>
+                  <h3 class="description_Title">
+                    <strong>Another Day Another Code</strong>
+                  </h3>
+                  <p class="description_paragraph">
+                    Writing code has always been my passion, which I work on every
+                    day.
+                  </p>
+                </li>
+              </ul>
+            </div>
+            <div class="makeRoom">
+              <ul class="getDescription">
+                <li class="Descriptions">
+                  <div class="pic">
+                    <img id="myPic" src="img/me.jpg" alt="Ill Ryders Together">
+                  </div>
+                  <h3 class="description_Title">
+                    <strong>Ron(Dell) Computers</strong>
+                  </h3>
+                  <p class="description_paragraph">
+                    This picture is an upcoming web developer with a large future
+                    in being a programmer.
+                  </p>
+                </li>
+              </ul>
+            </div>
+            <div class="makeRoom">
+              <ul class="getDescription">
+                <li class="Descriptions">
+                  <div class="pic">
+                    <img id="myPic" src="img/myBike.jpg" alt="Ill Ryders Together">
+                  </div>
+                  <h3 class="description_Title">
+                    <strong>The Love For Motocycles and Coding</strong>
+                  </h3>
+                  <p class="description_paragraph">
+                    My dream is to build motocycle websites for large mototcycle
+                    companies.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+        </section>
+
+      </section>
+
+    </section>
+  <script>
+  function openNav() {
+    document.getElementById("myNav").style.height = "100%";
+  }
+  function closeNav() {
+    document.getElementById("myNav").style.height = "0%";
+  }
+  </script>
+
+  </body>
+
+</html>

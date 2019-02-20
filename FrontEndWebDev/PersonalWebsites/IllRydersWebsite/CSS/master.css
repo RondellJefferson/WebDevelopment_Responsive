@@ -1,0 +1,49 @@
+html, body {
+    font-family: Verdana,sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+}
+.rj-color{
+  background-color: black;
+  color: white;
+}
+.main-button{
+  color: white;
+  font-size: 15px;
+  font-family: Verdana,sans-serif;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 8px 16px;
+}
+.navContainer{
+  padding: 8px 16px;
+}
+.rj-center{
+  text-align: center;
+}
+.myContainer{
+  padding: 0.01em 16px;
+}
+.rj-myContent{
+  max-width: 980px;
+  margin: auto;
+}
+h2, .CustomFont{
+  font-family: "Segoe UI",Arial,sans-serif;
+  letter-spacing: 4px;
+}
+h2{
+  font-weight: 350;
+  margin: 10px 0;
+  font-size: 30px;
+}
+.opacity {
+  opacity: 0.60;
+}
+.rj-xlarge{
+  font-size: 24px;
+  padding-top: 64px;
+  padding-bottom: 64px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
